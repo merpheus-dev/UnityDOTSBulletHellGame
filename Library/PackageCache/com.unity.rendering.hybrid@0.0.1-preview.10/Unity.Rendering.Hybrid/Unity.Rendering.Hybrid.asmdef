@@ -1,0 +1,19 @@
+{
+    "name": "Unity.Rendering.Hybrid",
+    "references": [
+        "Unity.Entities",
+        "Unity.Entities.Hybrid",
+        "Unity.Transforms",
+	"Unity.Transforms.Hybrid",
+        "Unity.Collections",
+        "Unity.Burst",
+        "Unity.Jobs",
+        "Unity.Mathematics",
+        "Unity.Mathematics.Extensions",
+        "Unity.Mathematics.Extensions.Hybrid"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true
+}

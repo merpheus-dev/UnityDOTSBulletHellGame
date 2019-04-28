@@ -1,0 +1,16 @@
+{
+    "displayName": "Hybrid Renderer", 
+    "name": "com.unity.rendering.hybrid", 
+    "unity": "2019.1", 
+    "version": "0.0.1-preview.10", 
+    "dependencies": {
+        "com.unity.entities": "0.0.12-preview.30"
+    }, 
+    "keywords": [
+        "entities", 
+        "unity", 
+        "hybrid", 
+        "rendering"
+    ], 
+    "description": "Core components and systems for drawing meshes using ECS, including instanced mesh rendering and LOD"
+}
