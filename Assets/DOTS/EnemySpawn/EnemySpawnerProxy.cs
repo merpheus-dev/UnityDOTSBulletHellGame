@@ -8,9 +8,8 @@ using Unity.Rendering;
 using Unity.Transforms;
 [DisallowMultipleComponent]
 [RequiresEntityConversion]
-public class EnemySpawnerProxy : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
+public class EnemySpawnerProxy : MonoBehaviour, IConvertGameObjectToEntity
 {
-    public GameObject Prefab;
     public float3[] Positions;
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
@@ -18,14 +17,8 @@ public class EnemySpawnerProxy : MonoBehaviour, IConvertGameObjectToEntity, IDec
         var enemySpawnData = new EnemySpawner
         {
             Position = Positions[UnityEngine.Random.Range(0, Positions.Length)],
-            Prefab = conversionSystem.GetPrimaryEntity(Prefab)
         };
 
         dstManager.AddComponentData(entity, enemySpawnData);
-    }
-
-    public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
-    {
-        referencedPrefabs.Add(Prefab);
     }
 }

@@ -68,6 +68,9 @@
     <Compile Include="Assets\DOTS\EnemySpawn\EnemySpawner.cs" />
     <Compile Include="Assets\DOTS\EnemySpawn\EnemySpawnerProxy.cs" />
     <Compile Include="Assets\DOTS\EnemySpawn\EnemySpawnerSystem.cs" />
+    <Compile Include="Assets\DOTS\EnemySpawn\PoncikSpawnData.cs" />
+    <Compile Include="Assets\DOTS\EnemySpawn\PoncikSpawnProxy.cs" />
+    <Compile Include="Assets\DOTS\EnemySpawn\PoncikSpawnSystem.cs" />
     <Compile Include="Assets\DOTS\Movement\MoveSpeed.cs" />
     <Compile Include="Assets\DOTS\Movement\MoveSpeedProxy.cs" />
     <Compile Include="Assets\DOTS\Movement\MoveSpeedSystem.cs" />

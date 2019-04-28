@@ -7,6 +7,5 @@ using Unity.Transforms;
 [Serializable]
 public struct EnemySpawner : IComponentData
 {
-    public Entity Prefab;
     public float3 Position;
 }

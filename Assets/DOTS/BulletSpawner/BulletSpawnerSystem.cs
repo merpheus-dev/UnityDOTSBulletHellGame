@@ -32,7 +32,7 @@ public class BulletSpawnerSystem : ComponentSystem
             Translation translation = new Translation() { Value = burstPoint.Position + burstPoint.Forward };
             Rotation rot = new Rotation() { Value = rotation.Value };
 
-           // PostUpdateCommands.SetComponent(instance, velocity);
+            PostUpdateCommands.SetComponent(instance, velocity);
             PostUpdateCommands.SetComponent(instance, rot);
             PostUpdateCommands.SetComponent(instance, translation);
             bulletSpawner.Duration = 0f;

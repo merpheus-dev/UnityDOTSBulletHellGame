@@ -6,14 +6,41 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using static Unity.Mathematics.math;
 
-public class EnemySpawnerSystem : ComponentSystem
+public class EnemySpawnerSystem : JobComponentSystem
 {
-    protected override void OnUpdate()
+    private EntityQuery query;
+
+    protected override void OnCreate()
     {
-        Entities.ForEach((ref EnemySpawner enemySpawner) =>
+        query = GetEntityQuery(typeof(Translation), ComponentType.ReadOnly<EnemySpawner>());
+    }
+
+    struct EnemySpawnJob : IJobChunk
+    {
+        public ArchetypeChunkComponentType<Translation> Translations;
+        public ArchetypeChunkComponentType<EnemySpawner> Spawners;
+        public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
         {
-           var instance = PostUpdateCommands.Instantiate(enemySpawner.Prefab);
-            PostUpdateCommands.SetComponent(instance, new Translation { Value = enemySpawner.Position });
-        });
+            var chunkTranslations = chunk.GetNativeArray(Translations);
+            var chunkSpawners = chunk.GetNativeArray(Spawners);
+            for (int i = 0; i < chunk.Count; i++)
+            {
+                chunkTranslations[i] = new Translation { Value = chunkSpawners[i].Position };
+            }
+        }
+    }
+
+    protected override JobHandle OnUpdate(JobHandle inputDeps)
+    {
+        var translationType = GetArchetypeChunkComponentType<Translation>(false);
+        var spawnerType = GetArchetypeChunkComponentType<EnemySpawner>(false);
+
+        var job = new EnemySpawnJob
+        {
+            Spawners = spawnerType,
+            Translations = translationType
+        };
+
+        return job.Schedule(query, inputDeps);
     }
 }
