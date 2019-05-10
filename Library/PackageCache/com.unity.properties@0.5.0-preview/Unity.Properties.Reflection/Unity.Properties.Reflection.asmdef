@@ -1,0 +1,15 @@
+{
+    "name": "Unity.Properties.Reflection",
+    "references": [
+        "Unity.Collections",
+        "Unity.Properties"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Unity.Properties.Reflection.Tests",
+    "references": [
+        "Unity.Properties",
+        "Unity.Properties.Reflection"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": []
+}
