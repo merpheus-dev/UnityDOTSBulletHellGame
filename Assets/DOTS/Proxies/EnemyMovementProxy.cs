@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Collections;
+
+[RequiresEntityConversion]
 public class EnemyMovementProxy : MonoBehaviour, IConvertGameObjectToEntity
 {
+    public float Speed=5f;
     public List<float3> Positions;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
@@ -13,6 +15,10 @@ public class EnemyMovementProxy : MonoBehaviour, IConvertGameObjectToEntity
         foreach (var position in Positions)
             buffer.Add(position);
 
-        dstManager.AddComponent(entity, typeof(EnemyMovementComponent));
+        var data = new EnemyMovementComponent
+        {
+            Speed = Speed
+        };
+        dstManager.AddComponentData(entity, data);
     }
 }

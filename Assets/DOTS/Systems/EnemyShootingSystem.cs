@@ -55,7 +55,7 @@ public class EnemyShootingSystem : JobComponentSystem
                     CommandBuffer.SetComponent(entity, localToWorld);
                     PhysicsVelocity velocity = new PhysicsVelocity
                     {
-                        Linear = new float3(0f, 0f, 40f),
+                        Linear = position.Forward*40f,
                         Angular = float3.zero
                     };
                     CommandBuffer.SetComponent(entity, velocity);

@@ -2,6 +2,7 @@
 using Unity.Entities;
 using UnityEngine;
 
+[RequireComponent(typeof(FireDurationComponentProxy))]
 public class BurstPointProxy : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
 {
     public GameObject Prefab;

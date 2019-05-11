@@ -3,22 +3,41 @@ using Unity.Burst;
 using Unity.Jobs;
 using Unity.Collections;
 using Unity.Transforms;
-public class EnemyMovementSystem: JobComponentSystem
+using Unity.Mathematics;
+using UnityEngine;
+public class EnemyMovementSystem : JobComponentSystem
 {
     [BurstCompile]
-    struct EnemyMovementJob : IJobForEachWithEntity<EnemyMovementComponent,Translation>
+    struct EnemyMovementJob : IJobForEachWithEntity<EnemyMovementComponent, Translation>
     {
-        [NativeDisableParallelForRestriction]
+        public float DeltaTime;
+
+        [ReadOnly]
         public BufferFromEntity<TargetPointBuffer> pointBuffer;
 
-        public void Execute(Entity entity, int index,[ReadOnly] ref EnemyMovementComponent enemyMovement,ref Translation translation)
+        public void Execute(Entity entity, int index, ref EnemyMovementComponent enemyMovement, ref Translation translation)
         {
             DynamicBuffer<TargetPointBuffer> targetPointBuffer = pointBuffer[entity];
-            for(var i = 0; i < targetPointBuffer.Length; i++)
+            if (targetPointBuffer.Length <= 0)
+                return;
+
+            float3 targetPositon = targetPointBuffer[enemyMovement.CurrentIndex].Value;
+            if (math.distance(translation.Value, targetPositon) < .1f)
             {
-                translation.Value = targetPointBuffer[i].Value;
-                //Debug.Log("Position:"+targetPointBuffer[i].Value);
+                if (targetPointBuffer.Length > enemyMovement.CurrentIndex + 1)
+                {
+                    enemyMovement.CurrentIndex++;
+                }
             }
+            else
+            {
+                translation.Value += -GetHeading(targetPositon, translation.Value) * DeltaTime * enemyMovement.Speed;
+            }
+        }
+
+        public float3 GetHeading(float3 begin,float3 destination)
+        {
+            return math.normalize(destination - begin);
         }
     }
 
@@ -26,7 +45,8 @@ public class EnemyMovementSystem: JobComponentSystem
     {
         EnemyMovementJob job = new EnemyMovementJob
         {
-            pointBuffer = GetBufferFromEntity<TargetPointBuffer>(true)
+            pointBuffer = GetBufferFromEntity<TargetPointBuffer>(true),
+            DeltaTime = Time.deltaTime
         };
         return job.Schedule(this, inputDeps);
     }

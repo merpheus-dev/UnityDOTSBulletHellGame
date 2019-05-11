@@ -2,6 +2,8 @@
 using Unity.Mathematics;
 public struct EnemyMovementComponent : IComponentData
 {
+    public int CurrentIndex;
+    public float Speed;
 }
 
 public struct TargetPointBuffer : IBufferElementData
