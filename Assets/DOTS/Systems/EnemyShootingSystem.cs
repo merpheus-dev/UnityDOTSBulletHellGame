@@ -13,7 +13,7 @@ public class EnemyShootingSystem : JobComponentSystem
 
     protected override void OnCreate()
     {
-        burstPointQuery = GetEntityQuery(ComponentType.ReadOnly<BurstPointComponent>());
+        burstPointQuery = GetEntityQuery(typeof(FireDurationComponent), ComponentType.ReadOnly<BurstPointComponent>());
         bufferSystem = World.Active.GetOrCreateSystem<EntityCommandBufferSystem>();
     }
 
@@ -29,17 +29,16 @@ public class EnemyShootingSystem : JobComponentSystem
         {
             var positions = chunk.GetNativeArray(PositionType);
             var burstPoints = chunk.GetNativeArray(BurstPointType);
+            //Duration is seperate because otherwise entity prefab just disappear because of we need to REASSIGN to this element instead of change.
             var fireDurations = chunk.GetNativeArray(FireDurationType);
-            for (var i = 0; i < burstPoints.Length; i++)
+            for (var i = 0; i < chunk.Count; i++)
             {
                 var position = positions[i];
                 var burstPoint = burstPoints[i];
                 var fireDuration = fireDurations[i];
 
-                //FAILS BECAUSE, SOME OF THEM RUNS ON A DIFFERENT THREAD, SO IT WON'T BE EQUAL.
                 if (fireDurations[i].FireDuration <= burstPoints[i].ShootRate)
                 {
-                    //Mescaline... it is the only way to fly! And.. also this is the only way to change a parameter in the chunk, it it immutable
                     fireDurations[i] = new FireDurationComponent
                     {
                         FireDuration = fireDuration.FireDuration + DeltaTime
@@ -56,7 +55,7 @@ public class EnemyShootingSystem : JobComponentSystem
                     CommandBuffer.SetComponent(entity, localToWorld);
                     PhysicsVelocity velocity = new PhysicsVelocity
                     {
-                        Linear = new float3(0f, 0f, 20f),
+                        Linear = new float3(0f, 0f, 40f),
                         Angular = float3.zero
                     };
                     CommandBuffer.SetComponent(entity, velocity);

@@ -63,12 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DOTS\Components\BurstPointComponent.cs" />
+    <Compile Include="Assets\DOTS\Components\EnemyMovementComponent.cs" />
     <Compile Include="Assets\DOTS\Components\FireDurationComponent.cs" />
     <Compile Include="Assets\DOTS\Components\PlayerInputComponent.cs" />
     <Compile Include="Assets\DOTS\Components\PlayerMovementComponent.cs" />
     <Compile Include="Assets\DOTS\Proxies\BurstPointProxy.cs" />
+    <Compile Include="Assets\DOTS\Proxies\EnemyMovementProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\FireDurationComponentProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\PlayerProxy.cs" />
+    <Compile Include="Assets\DOTS\Systems\EnemyMovementSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\EnemyShootingSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\PlayerInputSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\PlayerMovementSystem.cs" />
