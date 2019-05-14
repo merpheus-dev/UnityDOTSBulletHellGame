@@ -13,10 +13,16 @@ public class EnemyShootingSystem : JobComponentSystem
 
     protected override void OnCreate()
     {
-        burstPointQuery = GetEntityQuery(typeof(FireDurationComponent), ComponentType.ReadOnly<BurstPointComponent>());
+        var query = new EntityQueryDesc
+        {
+            None = new ComponentType[] {typeof(PlayerInputComponent)},
+            All = new ComponentType[] { typeof(FireDurationComponent), ComponentType.ReadOnly<BurstPointComponent>() }
+        };
+        burstPointQuery = GetEntityQuery(query);
         bufferSystem = World.Active.GetOrCreateSystem<EntityCommandBufferSystem>();
     }
 
+    #region Chunk
     [RequireComponentTag(typeof(BurstPointComponent))]
     struct EnemyShootingJob : IJobChunk
     {
@@ -36,7 +42,6 @@ public class EnemyShootingSystem : JobComponentSystem
                 var position = positions[i];
                 var burstPoint = burstPoints[i];
                 var fireDuration = fireDurations[i];
-
                 if (fireDurations[i].FireDuration <= burstPoints[i].ShootRate)
                 {
                     fireDurations[i] = new FireDurationComponent
@@ -52,10 +57,11 @@ public class EnemyShootingSystem : JobComponentSystem
                     {
                         Value = new float3(position.Value.c3.x, position.Value.c3.y, position.Value.c3.z)
                     };
+                    //SetComponent works faster than AddComponent
                     CommandBuffer.SetComponent(entity, localToWorld);
                     PhysicsVelocity velocity = new PhysicsVelocity
                     {
-                        Linear = position.Forward*40f,
+                        Linear = position.Forward * burstPoint.Speed,
                         Angular = float3.zero
                     };
                     CommandBuffer.SetComponent(entity, velocity);
@@ -63,6 +69,8 @@ public class EnemyShootingSystem : JobComponentSystem
             }
         }
     }
+    #endregion
+
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         EnemyShootingJob job = new EnemyShootingJob

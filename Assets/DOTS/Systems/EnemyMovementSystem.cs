@@ -5,8 +5,10 @@ using Unity.Collections;
 using Unity.Transforms;
 using Unity.Mathematics;
 using UnityEngine;
+using Unity.Physics.Systems;
 public class EnemyMovementSystem : JobComponentSystem
 {
+
     [BurstCompile]
     struct EnemyMovementJob : IJobForEachWithEntity<EnemyMovementComponent, Translation>
     {
@@ -33,6 +35,7 @@ public class EnemyMovementSystem : JobComponentSystem
             {
                 translation.Value += -GetHeading(targetPositon, translation.Value) * DeltaTime * enemyMovement.Speed;
             }
+            
         }
 
         public float3 GetHeading(float3 begin,float3 destination)

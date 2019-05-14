@@ -24,7 +24,7 @@ public class PlayerInputSystem : JobComponentSystem
         PlayerInputJob job = new PlayerInputJob
         {
             MovementVector = new float2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")),
-            IsFiring = Input.GetMouseButton(0)
+            IsFiring = Input.GetKey(KeyCode.Space)
         };
         return job.Schedule(this, inputDeps);
     }

@@ -6,14 +6,18 @@ using UnityEngine;
 [RequiresEntityConversion]
 public class PlayerProxy : MonoBehaviour, IConvertGameObjectToEntity
 {
+    public bool Parent = false;
     public float MovementSpeed = 5f;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        var data = new PlayerMovementComponent
+        if (Parent)
         {
-            Speed = MovementSpeed
-        };
+            var data = new PlayerMovementComponent
+            {
+                Speed = MovementSpeed
+            };
+            dstManager.AddComponentData(entity, data);
+        }
         dstManager.AddComponent(entity, typeof(PlayerInputComponent));
-        dstManager.AddComponentData(entity, data);
     }
 }

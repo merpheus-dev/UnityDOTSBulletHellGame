@@ -7,12 +7,14 @@ public class BurstPointProxy : MonoBehaviour, IConvertGameObjectToEntity, IDecla
 {
     public GameObject Prefab;
     public float ShootRate = .2f;
+    public float Speed = 50f;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         var data = new BurstPointComponent
         {
             Bullet = conversionSystem.GetPrimaryEntity(Prefab),
-            ShootRate = ShootRate
+            ShootRate = ShootRate,
+            Speed = Speed
         };
         dstManager.AddComponentData(entity, data);
         //dstManager.AddComponent(entity, typeof(FireDurationComponent));

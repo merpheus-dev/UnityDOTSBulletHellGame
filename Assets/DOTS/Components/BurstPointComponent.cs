@@ -3,5 +3,6 @@ public struct BurstPointComponent : IComponentData
 {
     public Entity Bullet;
     public float ShootRate;
+    public float Speed;
 }
 
