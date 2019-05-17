@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1606166935449763065}
   - component: {fileID: 1606166935449763066}
   - component: {fileID: 1606166935449763069}
+  - component: {fileID: 5131198359039019609}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -28,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606166935449763067}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.73}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &1606166935449763071
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConversionMode: 0
+  ConversionMode: 1
 --- !u!114 &1606166935449763069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,13 +190,27 @@ MonoBehaviour:
         CombineMode: 2
     m_BelongsTo:
       m_Override: 0
-      m_Value: 0100000000000000000000000000000000000000000000000000000000000000
+      m_Value: 0101010101010101010101010101010101010101010101010101010101010101
     m_CollidesWith:
       m_Override: 0
-      m_Value: 0001010101010101010101010101010101010101010101010101010101010101
+      m_Value: 0101010101010101010101010101010101010101010101010101010101010101
     m_RaisesCollisionEvents:
       m_Override: 0
       m_Value: 0
     m_CustomFlags:
       m_Override: 0
       m_Value: 0000000000000000
+--- !u!114 &5131198359039019609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606166935449763067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdce2340d662a15468d65a42302f8a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionLayer: 2
+  BelongToPlayer: 0

@@ -10,7 +10,6 @@ using Unity.Burst;
 public class BulletCollisionHandlingSystem : JobComponentSystem
 {
     private EntityCommandBufferSystem bufferSystem;
-    private NativeArray<Health> healths;
     protected override void OnCreate()
     {
         bufferSystem = World.Active.GetOrCreateSystem<EntityCommandBufferSystem>();
@@ -19,11 +18,11 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
     struct BulletCollisionHandlingJob : IJobForEachWithEntity<PhysicsVelocity, LocalToWorld, BulletCollisionComponent>
     {
         [ReadOnly] public EntityCommandBuffer CommandBuffer;
-        [ReadOnly] public PhysicsWorld world;
+        [ReadOnly] public PhysicsWorld _World;
         [ReadOnly] public ComponentDataFromEntity<Health> HealthComponents;
         [ReadOnly] public ComponentDataFromEntity<ExplosionComponent> ExplosionComponents;
-        [ReadOnly] public ComponentDataFromEntity<Translation> TranslationComponents; 
-        public void Execute(Entity e, int index, 
+        [ReadOnly] public ComponentDataFromEntity<Translation> TranslationComponents;
+        public void Execute(Entity e, int index,
             ref PhysicsVelocity physicsVelocity, ref LocalToWorld localToWorld, ref BulletCollisionComponent bulletCollision)
         {
             if (bulletCollision.Exploded)
@@ -37,19 +36,23 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
                 },
                 Filter = new CollisionFilter()
                 {
-                    CategoryBits = ~0u, // all 1s, so all layers, collide with everything 
+                    // MaskBits is "A bitmask which describes which layers a collider belongs too"
+                    //CategoryBits is "A bitmask which describes which layers this collider should interact with"
+                    CategoryBits = ~0u,
                     MaskBits = ~0u,
                     GroupIndex = 0
                 }
             };
-            bulletCollision.Raycasting = world.CollisionWorld.CastRay(input, out RaycastHit hit);
+            bulletCollision.Raycasting = _World.CollisionWorld.CastRay(input, out RaycastHit hit);
             if (bulletCollision.Raycasting)
             {
                 bulletCollision.Exploded = true;
                 bulletCollision.CastDistance = math.distance(localToWorld.Position, hit.Position);
                 if (bulletCollision.CastDistance < .5f)
                 {
-                    var collisionEntity = world.Bodies[hit.RigidBodyIndex].Entity;
+                    var collisionEntity = _World.Bodies[hit.RigidBodyIndex].Entity;
+                    if (!HealthComponents.Exists(collisionEntity))
+                        return;
                     var healthComponent = HealthComponents[collisionEntity];
                     var explosionComponent = ExplosionComponents[collisionEntity];
                     Health health = new Health
@@ -77,7 +80,6 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
         {
             if (health.Value > 0f)
                 return;
-            //CommandBuffer.RemoveComponent(e, typeof(RenderMesh));
             var explosive = CommandBuffer.Instantiate(explosion.Prefab);
             Translation position = new Translation
             {
@@ -88,24 +90,23 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
         }
     }
 
-
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         EntityCommandBuffer buffer = bufferSystem.CreateCommandBuffer();
         var job = new BulletCollisionHandlingJob
         {
-            world = World.Active.GetExistingSystem<BuildPhysicsWorld>().PhysicsWorld,
+            _World = World.Active.GetExistingSystem<BuildPhysicsWorld>().PhysicsWorld,
             CommandBuffer = buffer,
             HealthComponents = GetComponentDataFromEntity<Health>(true),
             ExplosionComponents = GetComponentDataFromEntity<ExplosionComponent>(true),
             TranslationComponents = GetComponentDataFromEntity<Translation>(true)
         }.Schedule(this, inputDeps);
         job.Complete();
+
         var healthManagementJob = new HealthManagementJob
         {
-            CommandBuffer = buffer
+            CommandBuffer = buffer,
         }.Schedule(this, job);
-
         return healthManagementJob;
     }
 }
@@ -116,4 +117,7 @@ public struct BulletCollisionComponent : IComponentData
     public bool Raycasting;
     public float CastDistance;
     public bool Exploded;
+    public int InteractionLayer;
+    public int BelongingLayer;
+    public bool BelongToPlayer;
 }
