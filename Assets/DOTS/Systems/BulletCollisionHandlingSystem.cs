@@ -50,6 +50,8 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
                 bulletCollision.CastDistance = math.distance(localToWorld.Position, hit.Position);
                 if (bulletCollision.CastDistance < .5f)
                 {
+                    if (hit.RigidBodyIndex == -1)
+                        return;
                     var collisionEntity = _World.Bodies[hit.RigidBodyIndex].Entity;
                     if (!HealthComponents.Exists(collisionEntity))
                         return;
@@ -86,7 +88,8 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
                 Value = explosion.Position
             };
             CommandBuffer.SetComponent(explosive, position);
-            CommandBuffer.DestroyEntity(e);
+            CommandBuffer.AddComponent(e,new Disabled());
+            //CommandBuffer.DestroyEntity(e);
         }
     }
 
@@ -101,6 +104,7 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
             ExplosionComponents = GetComponentDataFromEntity<ExplosionComponent>(true),
             TranslationComponents = GetComponentDataFromEntity<Translation>(true)
         }.Schedule(this, inputDeps);
+        bufferSystem.AddJobHandleForProducer(job);
         job.Complete();
 
         var healthManagementJob = new HealthManagementJob

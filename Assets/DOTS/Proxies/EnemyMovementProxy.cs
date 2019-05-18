@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
-
+using System;
 [RequiresEntityConversion]
 public class EnemyMovementProxy : MonoBehaviour, IConvertGameObjectToEntity
 {
@@ -20,5 +20,6 @@ public class EnemyMovementProxy : MonoBehaviour, IConvertGameObjectToEntity
             Speed = Speed
         };
         dstManager.AddComponentData(entity, data);
+
     }
 }

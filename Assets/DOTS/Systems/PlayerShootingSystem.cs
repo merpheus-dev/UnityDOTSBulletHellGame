@@ -6,6 +6,7 @@ using Unity.Collections;
 using Unity.Mathematics;
 using Unity.Physics;
 using UnityEngine;
+[AlwaysUpdateSystem]
 public class PlayerShootingSystem: JobComponentSystem
 {
     private EntityCommandBufferSystem bufferSystem;

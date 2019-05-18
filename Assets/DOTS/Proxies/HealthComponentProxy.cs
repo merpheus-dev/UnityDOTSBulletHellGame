@@ -5,11 +5,12 @@ using Unity.Entities;
 [RequiresEntityConversion]
 public class HealthComponentProxy : MonoBehaviour, IConvertGameObjectToEntity
 {
+    public float Health = 100f;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         var data = new Health
         {
-            Value = 100f
+            Value = Health
         };
         dstManager.AddComponentData(entity, data);
     }

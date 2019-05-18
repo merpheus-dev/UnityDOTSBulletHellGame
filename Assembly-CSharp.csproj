@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\DOTS\Components\BurstPointComponent.cs" />
     <Compile Include="Assets\DOTS\Components\EnemyMovementComponent.cs" />
+    <Compile Include="Assets\DOTS\Components\EnemyTag.cs" />
     <Compile Include="Assets\DOTS\Components\ExplosionComponent.cs" />
     <Compile Include="Assets\DOTS\Components\FireDurationComponent.cs" />
     <Compile Include="Assets\DOTS\Components\Health.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\DOTS\Proxies\BulletCollisionProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\BurstPointProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\EnemyMovementProxy.cs" />
+    <Compile Include="Assets\DOTS\Proxies\EnemyTagProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\ExplosionComponentProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\FireDurationComponentProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\HealthComponentProxy.cs" />

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
-
+using System;
 [RequireComponent(typeof(FireDurationComponentProxy))]
 public class BurstPointProxy : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
 {
@@ -14,7 +14,7 @@ public class BurstPointProxy : MonoBehaviour, IConvertGameObjectToEntity, IDecla
         {
             Bullet = conversionSystem.GetPrimaryEntity(Prefab),
             ShootRate = ShootRate,
-            Speed = Speed
+            Speed = Speed,
         };
         dstManager.AddComponentData(entity, data);
         //dstManager.AddComponent(entity, typeof(FireDurationComponent));

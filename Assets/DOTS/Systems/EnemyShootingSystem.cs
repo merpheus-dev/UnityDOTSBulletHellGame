@@ -6,6 +6,7 @@ using Unity.Transforms;
 using Unity.Physics;
 using Unity.Mathematics;
 using UnityEngine;
+[AlwaysUpdateSystem]
 public class EnemyShootingSystem : JobComponentSystem
 {
     private EntityQuery burstPointQuery;
