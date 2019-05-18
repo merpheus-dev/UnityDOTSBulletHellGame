@@ -93,6 +93,17 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
         }
     }
 
+    struct ParentDisableCheckJob : IJobForEachWithEntity<Parent>
+    {
+        [ReadOnly] public EntityCommandBuffer CommandBuffer;
+        [ReadOnly] public ComponentDataFromEntity<Disabled> DisabledEntities;
+        public void Execute(Entity entity, int index, ref Parent parent)
+        {
+            if (DisabledEntities.Exists(parent.Value))
+                CommandBuffer.AddComponent(entity, new Disabled());
+        }
+    }
+
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         EntityCommandBuffer buffer = bufferSystem.CreateCommandBuffer();
@@ -111,7 +122,13 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
         {
             CommandBuffer = buffer,
         }.Schedule(this, job);
-        return healthManagementJob;
+
+        var disablerJob = new ParentDisableCheckJob
+        {
+            CommandBuffer = buffer,
+            DisabledEntities = GetComponentDataFromEntity<Disabled>(true)
+        }.Schedule(this, healthManagementJob);
+        return disablerJob;
     }
 }
 
