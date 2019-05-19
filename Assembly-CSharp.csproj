@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\DOTS\Components\BurstPointComponent.cs" />
     <Compile Include="Assets\DOTS\Components\EnemyMovementComponent.cs" />
+    <Compile Include="Assets\DOTS\Components\EnemySpawnComponent.cs" />
     <Compile Include="Assets\DOTS\Components\EnemyTag.cs" />
     <Compile Include="Assets\DOTS\Components\ExplosionComponent.cs" />
     <Compile Include="Assets\DOTS\Components\FireDurationComponent.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\DOTS\Proxies\BulletCollisionProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\BurstPointProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\EnemyMovementProxy.cs" />
+    <Compile Include="Assets\DOTS\Proxies\EnemySpawnerProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\EnemyTagProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\ExplosionComponentProxy.cs" />
     <Compile Include="Assets\DOTS\Proxies\FireDurationComponentProxy.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Assets\DOTS\Systems\BulletCollisionHandlingSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\EnemyMovementSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\EnemyShootingSystem.cs" />
+    <Compile Include="Assets\DOTS\Systems\EnemySpawnSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\HealthManagementSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\PlayerInputSystem.cs" />
     <Compile Include="Assets\DOTS\Systems\PlayerMovementSystem.cs" />
@@ -375,7 +378,7 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.0f2/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>C:/Users/mert2/Desktop/XLabs/DOTS_Experiment/Library/PackageCache/com.unity.collections@0.0.9-preview.18/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>C:/Users/mert2/Desktop/XLabs/DOTS_Experiment/Library/PackageCache/com.unity.collections@0.0.9-preview.19/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
