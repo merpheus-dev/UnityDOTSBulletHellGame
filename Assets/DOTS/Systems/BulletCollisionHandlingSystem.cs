@@ -69,6 +69,7 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
                         Position = TranslationComponents[collisionEntity].Value
                     };
                     CommandBuffer.SetComponent(collisionEntity, exposion);
+                    CommandBuffer.DestroyEntity(e);//Destroy Bullet
                 }
             }
         }
@@ -89,7 +90,6 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
             };
             CommandBuffer.SetComponent(explosive, position);
             CommandBuffer.AddComponent(e,new Disabled());
-            //CommandBuffer.DestroyEntity(e);
         }
     }
 

@@ -97,17 +97,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aeaff7cd16c6d842aa7073dc3ba7f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3.5
+  Speed: 10
   Positions:
-  - x: 0.2
-    y: 0
-    z: 15
-  - x: 15
-    y: 0
-    z: 0
-  - x: 15
-    y: 0
-    z: -25
+  - Position:
+    - x: 0
+      y: 0
+      z: 0
+    - x: -15
+      y: 0
+      z: -5
+    - x: 15
+      y: 0
+      z: -20
+  - Position:
+    - x: 0
+      y: 0
+      z: 0
+    - x: 15
+      y: 0
+      z: -5
+    - x: -15
+      y: 0
+      z: -20
 --- !u!114 &4696415921959274823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +324,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!1 &4696415920360053902
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,3 +384,4 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0

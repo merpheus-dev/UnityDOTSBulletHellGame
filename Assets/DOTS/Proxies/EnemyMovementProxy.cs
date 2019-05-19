@@ -20,6 +20,5 @@ public class EnemyMovementProxy : MonoBehaviour, IConvertGameObjectToEntity
             Speed = Speed
         };
         dstManager.AddComponentData(entity, data);
-
     }
 }
