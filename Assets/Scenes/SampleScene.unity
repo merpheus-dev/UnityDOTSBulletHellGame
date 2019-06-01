@@ -229,6 +229,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &147812027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &267088696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 3606512984833531132, guid: db16c3cb3c1774e4d89275415ffe2e9f, type: 3}
-  Count: 3
+  Count: 1
 --- !u!4 &267088697
 Transform:
   m_ObjectHideFlags: 0
@@ -347,6 +348,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &282687876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +376,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
@@ -676,6 +678,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &389129171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,6 +738,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &566936697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,6 +798,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &590603327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +826,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
@@ -1214,6 +1219,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &826255429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1423,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &1155639064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1705,7 +1712,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
@@ -2020,6 +2027,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 69b8d3a6116362c4aa9438fa21d039c9, type: 3}
   ShootRate: 0.1
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &1416961466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2049,7 +2057,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
@@ -2351,6 +2359,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 14dacc40aa520c84b8e787dcfaa3410d, type: 3}
   ShootRate: 0.7
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &1816826031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,6 +2432,7 @@ MonoBehaviour:
   Prefab: {fileID: 1606166935449763067, guid: 69b8d3a6116362c4aa9438fa21d039c9, type: 3}
   ShootRate: 0.1
   Speed: 100
+  IsPlayer: 0
 --- !u!114 &1954017319
 MonoBehaviour:
   m_ObjectHideFlags: 0

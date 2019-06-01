@@ -29,17 +29,15 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
                 return;
             RaycastInput input = new RaycastInput
             {
-                Ray = new Ray()
-                {
-                    Origin = localToWorld.Position,
-                    Direction = localToWorld.Forward
-                },
+
+                Start = localToWorld.Position,
+                End = localToWorld.Forward,
                 Filter = new CollisionFilter()
                 {
                     // MaskBits is "A bitmask which describes which layers a collider belongs too"
                     //CategoryBits is "A bitmask which describes which layers this collider should interact with"
-                    CategoryBits = ~0u,
-                    MaskBits = ~0u,
+                    BelongsTo = ~0u,
+                    CollidesWith = ~0u,
                     GroupIndex = 0
                 }
             };
@@ -89,7 +87,7 @@ public class BulletCollisionHandlingSystem : JobComponentSystem
                 Value = explosion.Position
             };
             CommandBuffer.SetComponent(explosive, position);
-            CommandBuffer.AddComponent(e,new Disabled());
+            CommandBuffer.AddComponent(e, new Disabled());
         }
     }
 
