@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5804526417975590959
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c9d7eead222e543832ca0c95cebbbd, type: 3}
+  m_Name: Scanlines
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  blend:
+    overrideState: 1
+    value: 0.192
 --- !u!114 &-4876109968574192750
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -127,10 +146,10 @@ MonoBehaviour:
   - {fileID: -1378636429938315859}
   - {fileID: 5162196403411969179}
   - {fileID: 254287903530970198}
-  - {fileID: -1654535514190781436}
   - {fileID: -673935614449952558}
   - {fileID: 5364560498241759336}
   - {fileID: 3233945411919947622}
+  - {fileID: -5804526417975590959}
 --- !u!114 &254287903530970198
 MonoBehaviour:
   m_ObjectHideFlags: 3

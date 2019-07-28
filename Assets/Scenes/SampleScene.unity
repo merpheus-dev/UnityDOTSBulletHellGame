@@ -601,7 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb46d14f770a7a34bb2ba8cafa3f42c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabGO: {fileID: 870441882051475300, guid: 08ca99cd865f918478c0a6f347548f17, type: 3}
+  PrefabGO: {fileID: 5111103949595041125, guid: ef764956cbcd45c41a9dd508fa61d620,
+    type: 3}
 --- !u!114 &382284826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb46d14f770a7a34bb2ba8cafa3f42c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabGO: {fileID: 870441882051475300, guid: 08ca99cd865f918478c0a6f347548f17, type: 3}
+  PrefabGO: {fileID: 5111103949595041125, guid: ef764956cbcd45c41a9dd508fa61d620,
+    type: 3}
 --- !u!114 &693762241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,7 +1376,9 @@ MonoBehaviour:
   m_ShowCustomSorter: 0
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
+  m_BeforeStackBundles:
+  - assemblyQualifiedName: Scanlines, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_AfterStackBundles: []
 --- !u!1 &1155639061
 GameObject:
@@ -1446,7 +1450,12 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
       propertyPath: m_Name
-      value: SpaceShipA (1)
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
@@ -1683,7 +1692,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb46d14f770a7a34bb2ba8cafa3f42c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabGO: {fileID: 870441882051475300, guid: 08ca99cd865f918478c0a6f347548f17, type: 3}
+  PrefabGO: {fileID: 5111103949595041125, guid: ef764956cbcd45c41a9dd508fa61d620,
+    type: 3}
 --- !u!114 &1277929170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1707,12 +1717,12 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
       propertyPath: m_Name
-      value: SpaceShipA (4)
+      value: DamagedCoda
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5302bb80e70c924aa9d0bb3e373cb6e,
         type: 3}
@@ -2172,7 +2182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb46d14f770a7a34bb2ba8cafa3f42c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabGO: {fileID: 870441882051475300, guid: 08ca99cd865f918478c0a6f347548f17, type: 3}
+  PrefabGO: {fileID: 5111103949595041125, guid: ef764956cbcd45c41a9dd508fa61d620,
+    type: 3}
 --- !u!114 &1805433714
 MonoBehaviour:
   m_ObjectHideFlags: 0
